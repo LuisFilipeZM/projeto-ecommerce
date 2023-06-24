@@ -1,0 +1,12 @@
+.cadastro{
+    margin: auto;
+    width: 40%;
+}
+
+#btn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+}

@@ -1,0 +1,25 @@
+<div class="minha-conta">
+    <div class="section-title text-center">
+        <h3 class="title">Meus Dados</h3>
+    </div>
+    <div class="caption">
+        <div class="form-group">
+            <input class="input" type="text" name="name" placeholder="Nome Completo" [(ngModel)]="nome">
+        </div>
+        <div class="form-group">
+            <input class="input" type="text" name="cpf" placeholder="CPF" [(ngModel)]="cpf">
+        </div>
+        <div class="form-group">
+            <input class="input" type="email" name="email" placeholder="Email" [(ngModel)]="email">
+        </div>
+        <div class="form-group">
+            <input class="input" type="text" name="senha" placeholder="Senha" [(ngModel)]="senha">
+        </div>
+        <div class="form-group">
+            <input class="input" type="date" name="data" placeholder="Data de nascimento" [(ngModel)]="data_nascimento">
+        </div>
+    </div>
+    <div id="btn">
+    <a class="primary-btn" (click)="editar()">Salvar Alterações</a>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+<!-- /NAVIGATION -->
+
+<!-- BREADCRUMB -->
+<div id="breadcrumb" class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="breadcrumb-header">Cadastro de produtos</h3>
+            </div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /BREADCRUMB -->
+
+<!-- SECTION -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+
+            <div class="col-md-7">
+                <!-- Billing Details -->
+                <div class="billing-details" >
+                    <div class="section-title">
+                        <h3 class="title">Dados do produto</h3>
+                    </div>
+                    <div class="form-group">
+                        <input class="input" type="text" name="nome" placeholder="Nome do produto" [(ngModel)]="nome">
+                    </div>
+                    <div class="form-group">
+                        <input class="input" type="text" name="descricao" placeholder="Descrição" [(ngModel)]="descricao">
+                    </div>
+                    <div class="form-group">
+                        <input class="input" type="email" name="quantidade" placeholder="Quantidade" [(ngModel)]="quantidade">
+                    </div>
+                    <div class="form-group">
+                        <input class="input" type="text" name="valor" placeholder="Valor" [(ngModel)]="valor">
+                    </div>
+                    <div class="form-group">
+                        <input class="input" type="text" name="imagem_url" placeholder="Url Imagem" [(ngModel)]="imagem_url">
+                    </div>
+                    <a class="primary-btn order-submit" (click)="adicionarProduto()">Adicionar -></a>
+                </div>
+                <!-- /Billing Details -->
+            </div>
+
+            <!-- Order Details -->
+            <div class="col-md-5 order-details">
+                <div class="section-title text-center">
+                    <h3 class="title">Lista de Produtos</h3>
+                </div>
+                <div class="order-summary">
+                    <div class="order-col">
+                        <div><strong>PRODUTO</strong></div>
+                        <div><strong>REMOVER</strong></div>
+                    </div>
+                    <div class="order-products" *ngFor="let produto of produtos">
+                        <div class="order-col">
+                            <div>{{ produto.quantidade }}x {{ produto.nome }}</div>
+                            <div (click)="removerProduto(produto.nome)"><a><i class="fa fa-trash"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+                <a class="primary-btn order-submit">Cadastrar Produtos</a>
+            </div>
+            <!-- /Order Details -->
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /SECTION -->

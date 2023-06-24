@@ -1,0 +1,21 @@
+
+<div class="cart-list" *ngFor="let item of carrinho_service.itens;let i = index;">
+    <div class="product-widget">
+        <div class="product-img">
+            <img [src]="item.imagem" alt="">
+        </div>
+        <div class="product-body">
+            <h3 class="product-name"><a>{{ item.descricao }}</a></h3>
+            <h4 class="product-price"><span class="qty">{{ item.quantidade }}x</span>R${{ item.total }}</h4>
+        </div>
+        <button class="delete" (click)="retirarProduto()"><i class="fa fa-close"></i></button>
+    </div>
+</div>
+<div class="cart-summary" *ngFor="let item of carrinho_service.itens;">
+    <small>{{ item.quantidade }}Item(s) selecionados</small>
+    <h5>Total: {{ carrinho_service.getValorTotal() }}</h5>
+</div>
+<div class="cart-btns">
+    <a href="#">Ver Carrinho</a>
+    <a routerLink="/checkout">Checkout <i class="fa fa-arrow-circle-right"></i></a>
+</div>
