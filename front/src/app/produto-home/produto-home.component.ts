@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProdutoService } from '../service/produto.service';
+import { api } from 'src/api';
+
 
 @Component({
   selector: 'app-produto-home',
@@ -17,7 +19,13 @@ export class ProdutoHomeComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    this.produtos = this.produto_service.getAll();
+    this.buscarProduto();
+  }
+
+ 
+  public async buscarProduto() {
+    const {data} = await api.get('/produtos');
+    this.produtos = data;
   }
 
 }

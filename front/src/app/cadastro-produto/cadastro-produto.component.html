@@ -30,21 +30,39 @@
                         <h3 class="title">Dados do produto</h3>
                     </div>
                     <div class="form-group">
-                        <input class="input" type="text" name="nome" placeholder="Nome do produto" [(ngModel)]="nome">
+                        <label for="id">Id do produto:</label>
+                        <span><input class="input" type="number" id="id" name="id" placeholder="id do produto" [(ngModel)]="id" readonly></span>
                     </div>
                     <div class="form-group">
-                        <input class="input" type="text" name="descricao" placeholder="Descrição" [(ngModel)]="descricao">
+                        <label for="nome">Nome do produto:</label>
+                        <input class="input" type="text" id="nome" name="nome" placeholder="Nome do produto" [(ngModel)]="nome">
                     </div>
                     <div class="form-group">
-                        <input class="input" type="email" name="quantidade" placeholder="Quantidade" [(ngModel)]="quantidade">
+                        <label for="categoria">Categoria:</label>
+                        <input class="input" type="text" id="categoria" name="descricao" placeholder="Categoria" [(ngModel)]="categoria">
                     </div>
                     <div class="form-group">
-                        <input class="input" type="text" name="valor" placeholder="Valor" [(ngModel)]="valor">
+                        <label for="descricao">Descrição:</label>
+                        <input class="input" type="text" id="descricao" name="descricao" placeholder="Descrição" [(ngModel)]="descricao">
                     </div>
                     <div class="form-group">
-                        <input class="input" type="text" name="imagem_url" placeholder="Url Imagem" [(ngModel)]="imagem_url">
+                        <label for="quantidade">Quantidade:</label>
+                        <input class="input" type="email" id="quantidade" name="quantidade" placeholder="Quantidade" [(ngModel)]="quantidade">
                     </div>
-                    <a class="primary-btn order-submit" (click)="salvarProdutos()">Adicionar -></a>
+                    <div class="form-group">
+                        <label for="valor">Valor:</label>
+                        <input class="input" type="text" id="valor" name="valor" placeholder="Valor" [(ngModel)]="valor">
+                    </div>
+                    <div class="form-group">
+                        <label for="imagem_url">URL da Imagem:</label>
+                        <input class="input" type="text" id="imagem_url" name="imagem_url" placeholder="URL da Imagem" [(ngModel)]="imagem_url">
+                    </div>                    
+                    <a class="primary-btn order-submit" *ngIf="id !== 0; else adicionarButton" (click)="editarProduto(produto.id)">Editar</a>
+                    <ng-template #adicionarButton>
+                        <a class="primary-btn order-submit" (click)="salvarProdutos()">Adicionar</a>
+                    </ng-template>
+                    <!-- botao para lipar os campos -->
+                    <a class="secundary-btn order-submit" (click)="limparCampos()">limpar</a>
                 </div>
                 <!-- /Billing Details -->
             </div>
@@ -57,16 +75,20 @@
                 <div class="order-summary">
                     <div class="order-col">
                         <div><strong>PRODUTO</strong></div>
-                        <div><strong>REMOVER</strong></div>
+                        <div><strong>AÇÕES</strong></div>
                     </div>
                     <div class="order-products" *ngFor="let produto of produtos">
                         <div class="order-col">
                             <div>{{ produto.quantidade }}x {{ produto.nome }}</div>
-                           <div (click)="removerProduto(produto.id)"><a><i class="fa fa-trash"></i></a></div>
+                            <div class="actions">
+                                <a (click)="buscarProduto(produto.id)"><i class="fa fa-pencil"></i></a>
+                                <a (click)="removerProduto(produto.id)"><i class="fa fa-trash"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            
             <!-- /Order Details -->
         </div>
         <!-- /row -->

@@ -13,6 +13,7 @@ export class MinhaContaComponent implements OnInit {
   public email: string = '';
   public senha: string = '';
   public data_nascimento: string = '';
+  public usuario: any[] = [];
 
   constructor(
     public activated_route: ActivatedRoute,
@@ -21,11 +22,12 @@ export class MinhaContaComponent implements OnInit {
 
   ngOnInit() {
     this.verificarEstaLogado();
-    this.buscarInformacoes();
+    const id = Number(localStorage.getItem('id'));
+    this.buscarInformacoes(2);
   }
 
-  async buscarInformacoes() {
-    const response = await api.get('/usuarios/1');
+  async buscarInformacoes(id: number) {
+    const response = await api.get(`/usuarios/${id}`);
     const usuario = response.data;
     this.nome = usuario.nome;
     this.cpf = usuario.cpf;
@@ -35,7 +37,7 @@ export class MinhaContaComponent implements OnInit {
   }
 
   async editar() {
-    const response = await api.put('/usuarios/1', {
+    const response = await api.put('/usuarios/2', {
       nome: this.nome,
       cpf: this.cpf,
       email: this.email,

@@ -58,7 +58,7 @@
 					<div class="col-md-4 col-xs-6">
 						<div class="shop">
 							<div class="shop-img">
-								<img src="assets/img/shop02.png" alt="">
+								<img src="assets/img/shop04.png" alt="">
 							</div>
 							<div class="shop-body">
 								<h3>Câmeras<br>Coleção</h3>
@@ -106,7 +106,7 @@
 										<!-- product -->
 										<div class="product" *ngFor="let produto of produtos">
 											<div class="product-img">
-												<img [src]='produto.imagem' alt="">
+												<img [src]='produto.imagem_url' alt="">
 												<div class="product-label">
 													<span class="sale">-30%</span>
 													<span class="new">NOVO</span>
@@ -115,7 +115,7 @@
 											<div class="product-body">
 												<p class="product-category">Categoria</p>
 												<h3 class="product-name"><a href="#">{{ produto.nome }}</a></h3>
-												<h4 class="product-price">R$ {{ produto.preco }}</h4>
+												<h4 class="product-price">R$ {{ produto.valor }}</h4>
 												<div class="product-rating">
 													<i class="fa fa-star"></i>
 													<i class="fa fa-star"></i>

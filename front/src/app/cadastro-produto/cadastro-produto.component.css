@@ -1,0 +1,17 @@
+.actions {
+    display: flex;
+}
+
+.actions a:hover {
+    cursor: pointer;
+}
+
+.actions a {
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.secundary-btn {
+    margin-left: 10px;
+}
