@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { api } from 'src/api';
 
 @Component({
   selector: 'app-cadastro-produto',
@@ -13,36 +14,44 @@ export class CadastroProdutoComponent implements OnInit{
   public valor: number = 0;
   public imagem_url: string = '';
   public isEnabled: boolean = true;
-  public produtos:Array<any> = [];
+  public produto: any = null;
+  public produtos: any[] = [];
 
   constructor(
     public activated_route:ActivatedRoute
   ){ }
 
   ngOnInit(){
-    this.isEnabled = this.produtos.length ? false : true;
+    this.listarProdutos();
   }
+
+  public async listarProdutos(){
+    const {data} = await api.get('/produtos');
+    this.produtos = data;
+  }
+
+  public async removerProduto(id: number) {
+    await api.delete(`/produtos/${id}`);
+    await this.listarProdutos();
+  }
+
   public adicionarProduto(){
-    const produtos = {
+    this.produto = {
       nome: this.nome,
       descricao: this.descricao,
       quantidade: this.quantidade,
       valor: this.valor,
       imagem_url: this.imagem_url
     }
-
-    if (this.produtos.find(item => item.nome.toLocaleLowerCase() === produtos.nome.toLocaleLowerCase())){
-      alert("Já existe um produto com o mesmo nome");
-      return;
-    }
-
-    this.produtos.push(produtos);
-
-    console.log(this.produtos);
   }
 
-  removerProduto(nome: string){
-    this.produtos = this.produtos.filter(item => item.nome!== nome);
-    console.log(this.produtos);
+  public async salvarProdutos(){
+    this.adicionarProduto();
+    try {
+      await api.post('/produtos', this.produto)
+    } catch (error) {
+      console.log(error)
+    }
+    await this.listarProdutos();
   }
 }

@@ -1,19 +1,19 @@
 
-<div class="cart-list" *ngFor="let item of carrinho_service.itens;let i = index;">
+<div class="cart-list" *ngFor="let carrinho of carrinhos">
     <div class="product-widget">
         <div class="product-img">
-            <img [src]="item.imagem" alt="">
+            <img [src]="carrinho.imagem_produto" alt="">
         </div>
         <div class="product-body">
-            <h3 class="product-name"><a>{{ item.descricao }}</a></h3>
-            <h4 class="product-price"><span class="qty">{{ item.quantidade }}x</span>R${{ item.total }}</h4>
+            <h3 class="product-name"><a>{{ carrinho.nome_produto }}</a></h3>
+            <h4 class="product-price"><span class="qty">{{ carrinho.quantide_produto }}x</span>R${{ carrinho.valor_produto }}</h4>
         </div>
-        <button class="delete" (click)="retirarProduto()"><i class="fa fa-close"></i></button>
+        <button class="delete" (click)="removerProduto(carrinho.id)"><i class="fa fa-close"></i></button>
     </div>
 </div>
-<div class="cart-summary" *ngFor="let item of carrinho_service.itens;">
-    <small>{{ item.quantidade }}Item(s) selecionados</small>
-    <h5>Total: {{ carrinho_service.getValorTotal() }}</h5>
+<div class="cart-summary" *ngFor="let carrinho of carrinhos;">
+    <small>Item(s) selecionados</small>
+    <h5>Total:</h5>
 </div>
 <div class="cart-btns">
     <a href="#">Ver Carrinho</a>

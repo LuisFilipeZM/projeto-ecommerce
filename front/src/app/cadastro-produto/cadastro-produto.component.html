@@ -44,7 +44,7 @@
                     <div class="form-group">
                         <input class="input" type="text" name="imagem_url" placeholder="Url Imagem" [(ngModel)]="imagem_url">
                     </div>
-                    <a class="primary-btn order-submit" (click)="adicionarProduto()">Adicionar -></a>
+                    <a class="primary-btn order-submit" (click)="salvarProdutos()">Adicionar -></a>
                 </div>
                 <!-- /Billing Details -->
             </div>
@@ -62,11 +62,10 @@
                     <div class="order-products" *ngFor="let produto of produtos">
                         <div class="order-col">
                             <div>{{ produto.quantidade }}x {{ produto.nome }}</div>
-                            <div (click)="removerProduto(produto.nome)"><a><i class="fa fa-trash"></i></a></div>
+                           <div (click)="removerProduto(produto.id)"><a><i class="fa fa-trash"></i></a></div>
                         </div>
                     </div>
                 </div>
-                <a class="primary-btn order-submit">Cadastrar Produtos</a>
             </div>
             <!-- /Order Details -->
         </div>

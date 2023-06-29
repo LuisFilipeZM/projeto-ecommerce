@@ -252,7 +252,7 @@
                     <div class="col-md-4 col-xs-6" *ngFor="let produto of produtos">
                         <div class="product">
                             <div class="product-img">
-                                <img src="assets/img/product01.png" alt="">
+                                <img [src]="produto.imagem_url" alt="">
                                 <div class="product-label">
                                     <span class="sale">-30%</span>
                                     <span class="new">NOVO</span>
@@ -261,7 +261,7 @@
                             <div class="product-body">
                                 <p class="product-category">{{ produto.descricao }}</p>
                                 <h3 class="product-name"><a href="#">{{ produto.descricao }}</a></h3>
-                                <h4 class="product-price">R$ {{ produto.valor }} <del class="product-old-price">R${{ produto.valor + 100 }}</del></h4>
+                                <h4 class="product-price">R$ {{ produto.valor }} <del class="product-old-price">R${{ produto.valor }}</del></h4>
                                 <div class="product-rating">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
