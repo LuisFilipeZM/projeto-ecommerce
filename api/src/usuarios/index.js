@@ -44,13 +44,9 @@ async function login(email, senha) {
   try {
     const result = await Database.query(query);
     // Verificar se o resultado contém algum usuário correspondente
-
-    if (result.rows.length > 0 && result.rows[0].email == email && result.rows[0].senha == senha) {
-      // Usuário autenticado com sucesso
-      return result.rows[0];
-    } else {
-      // Credenciais inválidas
-      return result.rows[0];
+    
+    if (result.length > 0 && result[0].email == email && result[0].senha == senha) {
+      return result[0];
     }
   } catch (error) {
     // Lidar com erros de consulta

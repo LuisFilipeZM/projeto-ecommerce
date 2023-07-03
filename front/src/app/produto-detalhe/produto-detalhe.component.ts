@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ProdutoService } from '../service/produto.service';
 import { CarrinhoComprasService } from '../service/carrinho-compras.service';
+import { api } from 'src/api';
 
 @Component({
   selector: 'app-produto-detalhe',
@@ -11,6 +12,9 @@ import { CarrinhoComprasService } from '../service/carrinho-compras.service';
 export class ProdutoDetalheComponent implements OnInit{
   public produto:any;
   public quantidade:number = 1;
+  public url:string = '';
+  public path:number = 0;
+
   constructor(
     public activated_route:ActivatedRoute,
     public produto_service:ProdutoService,
@@ -18,7 +22,9 @@ export class ProdutoDetalheComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
-    this.carregar();
+    this.url = window.location.href;
+    this.path = Number(this.url.split('/produto/')[1]);
+    this.bucarProduto(this.path);
   }
 
   increment() {
@@ -30,24 +36,9 @@ export class ProdutoDetalheComponent implements OnInit{
       this.quantidade--;
     }
   }
-  carregar(){
-    this.activated_route.params
-    .subscribe((_params:any) => {
-      this.produto = this.produto_service.get(_params.id)
-    })
-  }
 
-  addCarrinho(produto:any){
-    console.log(produto);
-    console.log(this.quantidade);
-    this.carrinho_service.add({
-      "id":0,
-      "produto":produto.id,
-      "descricao":produto.nome,
-      "quantidade":this.quantidade,
-      "valor":produto.preco,
-      "imagem":produto.imagem,
-      "total":this.quantidade * (produto.preco).toFixed(2)
-    });
+  async bucarProduto(path: number) {
+    const response = await api.get(`/produtos/${path}`);
+    this.produto = response.data;  
   }
 }

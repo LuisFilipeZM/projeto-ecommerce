@@ -51,7 +51,7 @@
             <div class="col-md-5 col-md-push-2">
                 <div id="product-main-img">
                     <div class="product-preview">
-                        <img src="assets/img/product01.png" alt="">
+                        <img [src]='produto.imagem_url' alt="">
                     </div>
                 </div>
             </div>
@@ -94,12 +94,10 @@
                         <a class="review-link" href="#">10 Avaliações | Avaliar</a>
                     </div>
                     <div>
-                        <h3 class="product-price">R${{ produto.preco }} <del class="product-old-price">R$</del></h3>
+                        <h3 class="product-price">R${{ produto.valor }} <del class="product-old-price">R$</del></h3>
                         <span class="product-available">Com Estoque</span>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p>{{ produto.descricao }}</p>
 
                     <div class="add-to-cart">
                         <div class="qty-label">
@@ -110,7 +108,7 @@
                                 <span class="qty-down"(click)="decrement()">-</span>
                             </div>
                         </div>
-                        <button class="add-to-cart-btn" (click)="addCarrinho(produto)"><i class="fa fa-shopping-cart"></i> Adicionar ao Carrinho</button>
+                        <button class="add-to-cart-btn" ><i class="fa fa-shopping-cart"></i> Adicionar ao Carrinho</button>
                     </div>
 
                     <ul class="product-btns">
@@ -119,7 +117,7 @@
 
                     <ul class="product-links">
                         <li>Categoria:</li>
-                        <li><a href="#"> {{ produto.categoria.descricao }}</a></li>
+                        <li><a href="#"> {{ produto.categoria }}</a></li>
                     </ul>
 
                     <ul class="product-links">

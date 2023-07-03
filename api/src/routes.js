@@ -58,7 +58,6 @@ router.put('/usuarios/:id', async (req, res) => {
 
 router.post('/login', async (req, res) => {
     const { email, senha } = req.body;
-    console.log(req.body, "teste routes");
     const usuario = await usuarioService.login(email, senha);
     res.json(usuario);
 });

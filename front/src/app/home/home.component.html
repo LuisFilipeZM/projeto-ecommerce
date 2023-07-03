@@ -10,7 +10,15 @@
                         88801-001</a></li>
             </ul>
             <ul class="header-links pull-right">
-                <li><a href="#" routerLink="minha-conta"><i class="fa fa-user-o"></i> Minha Conta</a></li>
+                <li><a routerLink="minha-conta"*ngIf="userLogado">
+                    <i class="fa fa-user-o"></i>{{ userEmail }}</a>
+                </li>
+                <li><a routerLink="minha-conta"*ngIf="!userLogado">
+                    <i class="fa fa-user-o"></i>Minha conta</a>
+                </li>
+                <li *ngIf="userLogado">
+                    <a href="" (click)="logout()"> Sair </a>
+                </li>
             </ul>
         </div>
     </div>

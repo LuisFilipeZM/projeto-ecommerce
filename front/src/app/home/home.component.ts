@@ -8,12 +8,20 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   public userLogado: boolean = false;
+  public userEmail: string = '';
 
   constructor() {
     }
 
   ngOnInit() {
     this.usuarioLogado();
+    const userItem = localStorage.getItem('user');
+    const _userEmail = userItem ?  JSON.parse(userItem).email : "Minha Conta";
+    this.userEmail = _userEmail;
+  }
+
+  logout() {
+    localStorage.removeItem('user');
   }
 
   usuarioLogado() {

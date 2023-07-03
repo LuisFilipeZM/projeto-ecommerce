@@ -36,7 +36,6 @@ class Database {
     const client = await this.connect();
     try {
       const result = await client.query(sql);
-      console.log(result.rows, "teste query")
       return result.rows;
     } catch (err) {
       console.error('Erro ao executar a consulta:', err);

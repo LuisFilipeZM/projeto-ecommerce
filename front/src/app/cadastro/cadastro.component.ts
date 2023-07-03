@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { api } from 'src/api';
+import * as bcrypt from 'bcryptjs';
 
 @Component({
   selector: 'app-cadastro',
@@ -24,11 +25,12 @@ export class CadastroComponent {
     const email = this.email.trim();
     const senha = this.senha.trim();
     const data_nascimento = this.data_nascimento;
+    const hashedPassword = bcrypt.hashSync(senha, 10);
     
     try {
-      await api.post('/usuarios', {nome, cpf, email, senha, data_nascimento})
+      await api.post('/usuarios', { nome, cpf, email, senha: hashedPassword, data_nascimento });
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
 }

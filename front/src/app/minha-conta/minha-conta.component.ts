@@ -22,12 +22,13 @@ export class MinhaContaComponent implements OnInit {
 
   ngOnInit() {
     this.verificarEstaLogado();
-    const id = Number(localStorage.getItem('id'));
-    this.buscarInformacoes(2);
+    const userItem = localStorage.getItem('user');
+    const userId = userItem ? JSON.parse(userItem).id : null;
+    this.buscarInformacoes(userId);
   }
 
-  async buscarInformacoes(id: number) {
-    const response = await api.get(`/usuarios/${id}`);
+  async buscarInformacoes(userId: number) {
+    const response = await api.get(`/usuarios/${userId}`);
     const usuario = response.data;
     this.nome = usuario.nome;
     this.cpf = usuario.cpf;
