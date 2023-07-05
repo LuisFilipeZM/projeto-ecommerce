@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CarrinhoComprasService } from '../service/carrinho-compras.service';
 import { api } from 'src/api';
 
 @Component({
@@ -10,11 +9,10 @@ import { api } from 'src/api';
 })
 export class ListaProdutoComponent implements OnInit {
 
-  public produtos:Array<any> = [];
+  public produtos: Array<any> = [];
 
   constructor(
-    public activated_route: ActivatedRoute,
-    public carrinho_service: CarrinhoComprasService
+    public activated_route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -22,7 +20,9 @@ export class ListaProdutoComponent implements OnInit {
   }
 
   public async buscarProduto() {
-    const {data} = await api.get('/produtos');
+    const { data } = await api.get('/produtos');
     this.produtos = data;
   }
+
+  
 }

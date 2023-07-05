@@ -40,7 +40,8 @@
               "src/assets/js/nouislider.min.js",
               "src/assets/js/jquery.zoom.min.js",
               "src/assets/js/main.js",
-              "node_modules/jquery/dist/jquery.js"
+              "src/assets/js/jquery.min.js",
+              "src/assets/js/bootstrap.min.js"
             ]
           },
           "configurations": {

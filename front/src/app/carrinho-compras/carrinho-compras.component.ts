@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CarrinhoComprasService } from '../service/carrinho-compras.service';
 import { api } from 'src/api';
 
 @Component({
@@ -18,7 +17,6 @@ export class CarrinhoComprasComponent implements OnInit {
   public quantidade_produto: number = 0;
 
   constructor(
-    public carrinho_service:CarrinhoComprasService
   ){  }
 
   ngOnInit(): void {
@@ -29,6 +27,7 @@ export class CarrinhoComprasComponent implements OnInit {
     const user = JSON.parse(localStorage.getItem('user') as any);
     const {data} = await api.get(`/carrinho/${user.id}`);
     this.carrinhos = data;
+    console.log(this.carrinhos);
   }
   
   public async removerProduto(id: number) {
@@ -36,9 +35,9 @@ export class CarrinhoComprasComponent implements OnInit {
     await this.listarCarrinho();
   }
 
-  public async adicionarProdutoCarrinho() {
+  public async adicionarProdutoCarrinho(produto: any) {
      const user = JSON.parse(localStorage.getItem('user') as any);
-     const produto = {
+     const produtos = {
       nome_produto: this.produto,
       id_produto: this.id_produto,
       valor_produto: this.valor_produto,

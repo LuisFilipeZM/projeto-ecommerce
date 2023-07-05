@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { ProdutoService } from '../service/produto.service';
-import { CarrinhoComprasService } from '../service/carrinho-compras.service';
+import { CarrinhoComprasComponent } from '../carrinho-compras/carrinho-compras.component';
 import { api } from 'src/api';
 
 @Component({
@@ -17,8 +16,6 @@ export class ProdutoDetalheComponent implements OnInit{
 
   constructor(
     public activated_route:ActivatedRoute,
-    public produto_service:ProdutoService,
-    public carrinho_service:CarrinhoComprasService
   ){}
 
   ngOnInit(): void {
@@ -41,4 +38,16 @@ export class ProdutoDetalheComponent implements OnInit{
     const response = await api.get(`/produtos/${path}`);
     this.produto = response.data;  
   }
+
+  public async adicionarCarrinho(produto: any) {
+    const user = localStorage.getItem('user');
+    const _user = JSON.parse(user as any);
+    try {
+      await api.post('/carrinho', { nome_produto: produto.nome, id_produto: produto.id, valor_produto: produto.valor, usuario_id: _user.id, imagem_produto: produto.imagem_url, quantidade_produto: this.quantidade}
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
+ 
 }

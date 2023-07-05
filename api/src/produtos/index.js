@@ -15,7 +15,6 @@ async function save(produto) {
     text: 'INSERT INTO produtos (nome, valor, quantidade, descricao, imagem_url, categoria) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *',
     values: [produto.nome, produto.valor, Number(produto.quantidade), produto.descricao, produto.imagem_url, produto.categoria]
   };
-  console.log(query);
   await Database.query(query);
 
 }

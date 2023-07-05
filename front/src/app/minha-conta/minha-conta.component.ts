@@ -38,14 +38,15 @@ export class MinhaContaComponent implements OnInit {
   }
 
   async editar() {
-    const response = await api.put('/usuarios/2', {
+    const userItem = localStorage.getItem('user');
+    const _userId = userItem ? JSON.parse(userItem).id : null;
+    const response = await api.put(`/usuarios/${_userId}`, {
       nome: this.nome,
       cpf: this.cpf,
       email: this.email,
       senha: this.senha,
       data_nascimento: this.data_nascimento.toString() // Convertendo para formato ISO8601
     });
-    console.log(response);
   }
 
   verificarEstaLogado(){

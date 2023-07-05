@@ -63,22 +63,23 @@ router.post('/login', async (req, res) => {
 });
 
 //CARRINHO
-// router.get('/carrinho/:id', async (req, res) => {
-//   const { id } = req.params;
-//   const carrinho = await carrinhoService.findAll(id);
-//   res.json(carrinho);
-// });
+router.get('/carrinho/:id', async (req, res) => {
+  console.log(req.params);
+  const { id } = req.params;
+  const carrinho = await carrinhoService.findAll(id);
+  res.json(carrinho);
+});
 
-// router.post('/carrinho', async (req, res) => {
-//   const {nome_produto, id_produto, valor_produto, usuario_id, imagem_produto, quantidade_produto} = req.body;
-//   await carrinhoService.save(nome_produto, id_produto, valor_produto, usuario_id, imagem_produto, quantidade_produto);
-//   res.json({ sucesso: true });
-// });
+router.post('/carrinho', async (req, res) => {
+  const produto = req.body;
+  await carrinhoService.save(produto);
+  res.json({ sucesso: true });
+});
 
-// router.delete('/carrinho/:id', function(req, res) {
-//   const id = req.params;
-//   carrinhoService.remove(id);
-//   res.json({ sucesso: true });
-// });
+router.delete('/carrinho/:id', function(req, res) {
+  const id = req.params;
+  carrinhoService.remove(id);
+  res.json({ sucesso: true });
+});
 
 module.exports = router;

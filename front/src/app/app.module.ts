@@ -11,7 +11,6 @@ import { RouterModule } from '@angular/router';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { FormsModule } from '@angular/forms';
-import { ProdutoService } from './service/produto.service';
 import { CarrinhoComprasComponent } from './carrinho-compras/carrinho-compras.component';
 import { LoginComponent } from './login/login.component';
 import { MinhaContaComponent } from './minha-conta/minha-conta.component';
@@ -37,7 +36,6 @@ import { CadastroProdutoComponent } from './cadastro-produto/cadastro-produto.co
     RouterModule,
     FormsModule
   ],
-  providers: [ProdutoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

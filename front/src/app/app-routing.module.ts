@@ -9,6 +9,7 @@ import { CadastroComponent } from './cadastro/cadastro.component';
 import { LoginComponent } from './login/login.component';
 import { MinhaContaComponent } from './minha-conta/minha-conta.component';
 import { CadastroProdutoComponent } from './cadastro-produto/cadastro-produto.component';
+import { CarrinhoComprasComponent } from './carrinho-compras/carrinho-compras.component';
 
 const routes:Routes = [
   {
@@ -47,6 +48,10 @@ const routes:Routes = [
   {
     path:'cadastro-produto',
     component:CadastroProdutoComponent
+  },
+  {
+    path:'carrinho',
+    component:CarrinhoComprasComponent
   }
 ];
 

@@ -1,21 +1,62 @@
+<!-- SECTION -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <div class="col-md-7">
+                <!-- Billing Details -->
+                <div class="billing-details">
+                    <div class="section-title">
+                        <h3 class="title">Carrinho</h3>
+                    </div>
+                    <div class="list-group" *ngFor="let produto of carrinhos">
+                        <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+                            <div class="d-flex align-items-center">
+                                <div class="img">
+                                    <img [src]="produto.imagem_produto" width="50" height="30">
+                                </div>
+                                <div class="item-details">
+                                    <h5 class="mb-1">{{ produto.nome_produto }}</h5>
+                                    <small>Qtd: {{ produto.quantidade_produto }} x</small>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- botao para limpar os campos -->
+                </div>
+                <!-- /Billing Details -->
+            </div>
 
-<div class="cart-list" *ngFor="let carrinho of carrinhos">
-    <div class="product-widget">
-        <div class="product-img">
-            <img [src]="carrinho.imagem_produto" alt="">
+            <!-- Order Details -->
+            <div class="col-md-5 order-details">
+                <div class="billing-details">
+                    <div class="section-title">
+                        <h3 class="title">Endereço de entrega</h3>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Endereço:</label>
+                        <input class="input" type="text" id="address" name="address" placeholder="Endereço">
+                    </div>
+                    <div class="form-group">
+                        <label for="city">Cidade:</label>
+                        <input class="input" type="text" id="city" name="city" placeholder="Cidade">
+                    </div>
+                    <div class="form-group">
+                        <label for="zip-code">CEP:</label>
+                        <input class="input" type="text" id="zip-code" name="zip-code" placeholder="CEP">
+                    </div>
+                    <div class="form-group">
+                        <label for="tel">Telefone:</label>
+                        <input class="input" type="tel" id="tel" name="tel" placeholder="Telefone">
+                    </div>
+                </div>
+                <a class="primary-btn order-submit">Finalizar compra</a>
+            </div> 
+            <!-- /Order Details -->
         </div>
-        <div class="product-body">
-            <h3 class="product-name"><a>{{ carrinho.nome_produto }}</a></h3>
-            <h4 class="product-price"><span class="qty">{{ carrinho.quantide_produto }}x</span>R${{ carrinho.valor_produto }}</h4>
-        </div>
-        <button class="delete" (click)="removerProduto(carrinho.id)"><i class="fa fa-close"></i></button>
+        <!-- /row -->
     </div>
+    <!-- /container -->
 </div>
-<div class="cart-summary" *ngFor="let carrinho of carrinhos;">
-    <small>Item(s) selecionados</small>
-    <h5>Total:</h5>
-</div>
-<div class="cart-btns">
-    <a href="#">Ver Carrinho</a>
-    <a routerLink="/checkout">Checkout <i class="fa fa-arrow-circle-right"></i></a>
-</div>
+<!-- /SECTION -->

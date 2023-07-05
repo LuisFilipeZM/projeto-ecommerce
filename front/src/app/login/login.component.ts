@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { api } from 'src/api';
 import * as bootstrap from "bootstrap";
-import * as $ from 'jquery';
+import $ from 'jquery';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +24,7 @@ export class LoginComponent {
         email: this.email,
         senha: this.senha
       })
-      if (data) {
+       if (data) {
         const { id, email } = data;
         localStorage.setItem('user', JSON.stringify({ id, email }));
         this.router.navigate(['/home']);
@@ -32,7 +32,7 @@ export class LoginComponent {
         $('#errorModal').modal('show'); // Exibe o modal de erro
       }
     } catch (error) {
-      this.router.navigate(['/login']);
+      console.log(error);
     }
   }
 }
